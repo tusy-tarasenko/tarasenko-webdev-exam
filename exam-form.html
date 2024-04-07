@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="D:\web-project\First-Web-Project\Lab-1/styles-form-authentication.css">
+    <!-- Стили успешно подключенны и проверены-->
+</head>
+
+<body class="Feedback-form">
+    <h1> формы </h1>
+    <h2> Простая форма обратной связи </h2>
+    <form action="https://httpbin.org/post" method="POST">
+        <p>
+            <label for="user-name">Имя пользователя:</label>
+            <input id="user-name" type="text" placeholder="Введите имя" required>
+        </p>
+        <p>
+            <label for="city">название города:</label>
+            <input id="city" type="text" placeholder="Введите город">
+        </p>
+        <label for="user-email">email:</label>
+        <input id="user-email" type="email" placeholder="Введите почту">
+
+        <p>
+            <label for="date">Date:</label>
+            <input id="date" type="date" placeholder="Введите дату">
+        </p>
+        <p>
+            <label for="password">Пароль:</label>
+            <input id="password" type="password" placeholder="Введите пароль">
+        </p>
+        <p>
+        <h1>
+            Чекбоксы
+        </h1>
+        <h4> Выберите варианты коленей</h4>
+        <!--Чекбокс -->
+        <input type="checkbox" id="checkbox">
+        <label for="checkbox">
+            согласен
+        </label>
+        Ты согласен с моими правилами сука <br>
+        <input type="checkbox" id="checkbox2">
+        <label for="checkbox2">
+            не согласен
+        </label>
+        <p>
+            <!-- чекбоксы -->
+
+            <!--Радио кнопки (выбираем 1 пункт из группы ) + Радио группы-->
+
+            <input type="radio" name="choice" id="r-b1">
+            <label for="r-b1"> Радио-кнопка1</label>
+        <p></p>
+
+        <input type="radio" name="choice" id="r-b2">
+        <label for="r-b2"> Радио-кнопка2</label>
+        <p></p>
+
+        <input type="radio" name="choice" id="r-b3">
+        <label for="r-b3"> Радио-кнопка3</label>
+        <p></p>
+
+        <input type="radio" name="choice" id="r-b4">
+        <label for="r-b4"> Радио-кнопка4</label>
+        <p></p>
+
+        <input type="radio" name="choice" id="r-b5">
+        <label for="r-b5"> Радио-кнопка5</label>
+        <p></p>
+        <!--Радио кнопки  (выбираем 1 пункт из группы ) + Радио группы-->
+        <br>
+        <!--Поле для выбора файла-->
+
+        <label for="file">Выберете и прикрепите файл</label><br>
+        <input type="file" id="file">
+        <br><br>
+
+        <!--Поле для выбора файла ( для костомизации кнопок надо использовать скрипты,)-->
+        <div>
+            Примеры кнопок :
+        </div>
+        <div> 1. <input type="submit" value="Отправить форму "> </div>
+
+    </form>
+    </div>
+
+
+
+
+
+
+
+    </p>
+
+    </form>
+
+</body>
+
+</html>
