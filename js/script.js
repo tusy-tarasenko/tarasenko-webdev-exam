@@ -3,6 +3,8 @@ let application = {};
 let price = {};
 let sendData = new FormData();
 const alertPlaceholder = document.getElementById('liveAlertPlaceholder');
+
+
 // Функция для добавления всплывающего уведомления
 const appendAlert = (message, type) => {
 // Создание элемента всплывающего уведомления и добавление его в документ
@@ -15,6 +17,8 @@ const appendAlert = (message, type) => {
     ].join('');
     alertPlaceholder === null || alertPlaceholder === void 0 ? void 0 : alertPlaceholder.append(wrapper);
 };
+
+
 // Обработчик события для кнопки, вызывающей всплывающее уведомление
 const alertTrigger = document.getElementById('liveAlertBtn');
 if (alertTrigger) {
@@ -22,11 +26,14 @@ if (alertTrigger) {
         appendAlert('Nice, you triggered this alert message!', 'success');
     });
 }
+
 const api_key = "02ea2359-4533-408b-ad51-0fda9124b5d2";
 // Переменные для маршрутов и пагинации
 let walkingRoutes;
 let currentPage = 1;
 let maxPage = 1;
+
+
 // Функция для обработки маршрутов
 function walkingRoutesHandler() {
     let url = new URL("https://edu.std-900.ist.mospolytech.ru/api/routes");
@@ -42,6 +49,8 @@ function walkingRoutesHandler() {
     };
     xhr.send();
 }
+
+
 // Функция для установки атрибутов для всплывающих подсказок
 function setAttributesForTooltip(cell, tooltipText) {
     // Отрисовка списка маршрутов в таблице
@@ -50,6 +59,8 @@ function setAttributesForTooltip(cell, tooltipText) {
     cell.setAttribute("data-bs-custom-class", "custom-tooltip");
     cell.setAttribute("data-bs-title", tooltipText);
 }
+
+
 // Функция для отрисовки списка маршрутов
 function renderWalkingRoutes(walkingRoutes, fromTo = [0, 9]) {
     const maxLetters = Math.floor(window.screen.width / 10);
@@ -78,6 +89,8 @@ function renderWalkingRoutes(walkingRoutes, fromTo = [0, 9]) {
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
     const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
 }
+
+
 // Функция для отрисовки пагинации
 function renderPagination(fromTo = [1, 3]) {
     let pageOfPages = document.getElementsByClassName("page-of-pages")[0];
@@ -99,6 +112,8 @@ function renderPagination(fromTo = [1, 3]) {
     next.innerHTML = '<a class="page-link page-next" href="#walking-routes">Следующая</a>';
     pagination.appendChild(next);
 }
+
+
 // Функция для добавления языков в выпадающее меню
 function addLanguages() {
     let lng = [];
@@ -118,6 +133,8 @@ function addLanguages() {
         languageDropdownMenu === null || languageDropdownMenu === void 0 ? void 0 : languageDropdownMenu.appendChild(rowLanguage);
     }
 }
+
+
 let guides;
 // Функция для отрисовки гидов
 function renderGuides(language = "", expFrom = 0, expTo = 999) {
@@ -170,6 +187,8 @@ function renderGuides(language = "", expFrom = 0, expTo = 999) {
         }
     }
 }
+
+
 // Обработчик события для кнопок пагинации
 function pageBtnHandler(event) {
     const target = event.target;
@@ -211,6 +230,8 @@ function pageBtnHandler(event) {
         renderPagination([currentPage - 1, currentPage + 1]);
     renderWalkingRoutes(walkingRoutes, fromTo);
 }
+
+
 // Обработчик события для поиска
 function searchHandler() {
     const findRouteInput = document.getElementById('find-route-input');
@@ -222,12 +243,16 @@ function searchHandler() {
     }
     renderWalkingRoutes(wr);
 }
+
+
 // Обработчик события для клавиши "Enter"
 function handleEnterKey(event) {
     if (event.key === "Enter") {
         searchHandler();
     }
 }
+
+
 let routeId;
 // Обработчик события для кнопки выбора маршрута
 function walkingRouteBtnHandler(event) {
@@ -256,6 +281,8 @@ function walkingRouteBtnHandler(event) {
     };
     xhr.send();
 }
+
+
 let GuideId;
 // Обработчик события для кнопки выбора гида
 function GuideBtnHandler(event) {
@@ -288,6 +315,8 @@ function GuideBtnHandler(event) {
     transfer.checked = false;
     applicationFormalizationHandler();
 }
+
+
 //ф-ция для обработки заявки
 function applicationFormalizationHandler() {  
     const modalBio = document.querySelector('.modal-bio');
@@ -302,6 +331,8 @@ function modalHourBtnHandler(event) {
     input.value = "";
     input.value = String(countHours);
 }
+
+
 //функция обрабатывает данные из полей ввода в модальном окне.
 function appFormModalHandler() { 
     const hoursNumber = document.querySelector('.modal-hour-input');
@@ -352,6 +383,8 @@ function appFormModalHandler() {
     };
     updatePrice();
 }
+
+
 //функция вызывается при нажатии кнопки отправки заявки.
 function modalBtnSendHandler() { 
     if (!dataCorrectnessCheck())
@@ -370,6 +403,8 @@ function modalBtnSendHandler() {
             appendAlert(`Ошибка ${xhr.response.error}`, 'danger');
     };
 }
+
+
 //функция обновляет отображение итоговой стоимости экскурсии на веб-странице.
 function updatePrice() {
     const finalPrice = document.querySelector('.modal-final-value');
@@ -377,6 +412,7 @@ function updatePrice() {
     const transferCheckbox = document.querySelector('.modal-transfer-checkbox');
     const translateExtra = document.querySelector('.modal-option-fast-extra');
     const transferExtra = document.querySelector('.modal-option-transfer-extra');
+    const peopleCount = document.querySelector('.modal-people-count-input');
     
     const базоваяСтоимость = price.guideServiceCost * price.hoursNumber * price.isThisDayOff + price.isItMorning + price.isItEvening + price.priceNumberOfVisitors;
     
@@ -397,6 +433,7 @@ function updatePrice() {
 
     return fPrice;
 }
+
 
 //функция проверяет корректность введенных пользователем данных, таких как длительность экскурсии, дата, время, количество человек и другие параметры.
 function dataCorrectnessCheck() { 
@@ -455,6 +492,8 @@ function dataCorrectnessCheck() {
     sendData.append('optionSecond', transfer.checked ? '1' : '0');
     return flag;
 }
+
+
 function languageBtnHandler(event) {
     const target = event.target;
     const input = document.querySelector('.language-input');
